@@ -1,8 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <dom-module id="uvalib-analytics">
-
-
   <script>
     var _paq = _paq || [];
     _paq.push(['trackPageView']);
@@ -11,17 +9,22 @@
     Polymer({
       is: 'uvalib-analytics',
       properties: {
-        prop1: {
-          type: String,
-          value: 'uvalib-analytics',
+        siteId: {
+          type: Number,
+          value: null
         },
       },
       ready: function(){
-        var u="//analytics.lib.virginia.edu/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 13]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        this._init();
+      },
+      _init: function(){
+        if (this.siteId) {
+          var u="//analytics.lib.virginia.edu/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', this.siteId]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        }
       }
     });
   </script>
