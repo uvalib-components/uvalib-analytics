@@ -3,7 +3,7 @@
 <dom-module id="uvalib-analytics">
   <script>
     var _paq = _paq || [];
-    _paq.push(['trackPageView']);
+//    _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
 
     Polymer({
@@ -13,10 +13,27 @@
           type: Number,
           value: null
         },
+        path: {
+          type: String,
+          value: null,
+          observer: 'pathChanged'
+        }
       },
       ready: function(){
+        this.pathChanged();
         this._init();
       },
+      /**
+       * Called when the urls path has changed, calls piwiks trackPageView method
+       * This is called automatically whenever this elements path attribute changes
+       **/
+      pathChanged: function(){
+        // wait up to a second for any page changeing to settle down before counting this as a view
+        this.debounce('pagechange', function(){
+          _paq.push(['trackPageView']);
+        }, 1000);
+      },
+
       _init: function(){
         if (this.siteId) {
           var u="//analytics.lib.virginia.edu/";
