@@ -82,7 +82,7 @@ Example:
       },
 
       _init: function(){
-        if (this.siteId) {
+        if (this.siteId && document.location.hostname != "localhost") {
           var u="//analytics.lib.virginia.edu/";
           _paq.push(['setTrackerUrl', u+'piwik.php']);
           _paq.push(['setSiteId', this.siteId]);
