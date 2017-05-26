@@ -51,7 +51,7 @@ Example:
         event: {
           type: Object,
           value: null,
-          observer: 'eventTriggered'
+          observer: '_eventTriggered'
         }
       },
       ready: function(){
@@ -60,13 +60,16 @@ Example:
       },
       /**
        * Calls piwiks trackEvent method
-       * This is called whenever this elements event attribute changes (or manually if you want to continually trigger the same event)
+       * This is called whenever this elements event attribute changes
        **/
-      eventTriggered: function(){
+      _eventTriggered: function(){
         if (this.event)
           for (var key in this.event)
             if (this.event.hasOwnProperty(key))
-              _paq.push(['trackEvent',key,this.event[key]]);
+              _paq.push(['trackEvent',this._eventStringClean(key),this._eventStringClean(this.event[key])]);
+      },
+      _eventStringClean: function(str){
+        return str.replace(/\s+/,'-');
       },
       /**
        * Calls piwiks trackPageView method
