@@ -12,12 +12,13 @@
     <link rel="import" href="../../app-route/app-location.html">
     <link rel="import" href="../../app-route/app-route.html">
     <link rel="import" href="../../app-route/app-route-converter.html">
-    <link rel="import" href="../../paper-button/paper-button.html">
+    <link rel="import" href="../../uvalib-button/uvalib-button.html">
 
     <link rel="import" href="../uvalib-analytics.html">
-
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
   </head>
   <body>
 
@@ -26,18 +27,20 @@
       <demo-snippet>
         <template id="t">
 
-          <template is="dom-bind" id="app">
-            <p>This example uses a test site in our Piwik setup</p>
-            <app-location route="{{route}}"></app-location>
-            <app-route route="{{route}}" pattern="/:page" data="{{data}}"></app-route>
-            <app-route-converter path="{{path}}" route="{{route}}"></app-route-converter>
-            <uvalib-analytics site-id="23" path="{{path}}" event="{{theEvent}}"></uvalib-analytics>
-            <p>Your path is currently: {{path}}</p>
-            <a href="page1">Page1</a>
-            <a href="page2">Page2</a>
-            <a href="page3">Page3</a>
-            <paper-button on-tap="randomEvent">Trigger Event</paper-button>
-          </template>
+          <dom-bind id="app">
+            <template is="dom-bind">
+              <p>This example uses a test site in our Piwik setup</p>
+              <app-location route="{{route}}"></app-location>
+              <app-route route="{{route}}" pattern="/:page" data="{{data}}"></app-route>
+              <app-route-converter path="{{path}}" route="{{route}}"></app-route-converter>
+              <uvalib-analytics site-id="23" path="{{path}}" event="{{theEvent}}"></uvalib-analytics>
+              <p>Your path is currently: {{path}}</p>
+              <a href="page1">Page1</a>
+              <a href="page2">Page2</a>
+              <a href="page3">Page3</a>
+              <uvalib-button on-tap="randomEvent">Trigger Event</uvalib-button>
+            </template>
+          </dom-bind>
 
         </template>
       </demo-snippet>
