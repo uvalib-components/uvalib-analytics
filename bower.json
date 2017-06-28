@@ -3,10 +3,6 @@
   "description": "Web tracking for the Library",
   "main": "uvalib-analytics.html",
   "dependencies": {
-    "uvalib-elements": "uvalib-components/uvalib-elements#2.0"
-  },
-  "resolutions": {
-    "polymer": "^2.0.1",
-    "webcomponentsjs": "^v1.0.0"
+    "uvalib-elements": "uvalib-components/uvalib-elements#master"
   }
 }
