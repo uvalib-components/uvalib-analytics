@@ -3,7 +3,7 @@
   "description": "Web tracking for the Library",
   "main": "uvalib-analytics.html",
   "dependencies": {
-    "uvalib-elements": "uvalib-components/uvalib-elements#master"
+    "uvalib-elements": "uvalib-components/uvalib-elements#1.x"
   },
   "resolutions": {
     "lodash": "^4.17.4",
