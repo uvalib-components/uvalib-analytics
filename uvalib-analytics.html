@@ -78,8 +78,10 @@ Example:
       pathChanged: function(){
         // wait up to a second for any page changeing to settle down before counting this as a view
         this.debounce('pagechange', function(){
-          if (this.path)
+          if (this.path) {
             _paq.push(['setCustomUrl', document.location.origin+this.path ]);
+            _paq.push(['setDocumentTitle', document.title]);
+          }
           _paq.push(['trackPageView']);
         }, 1000);
       },
