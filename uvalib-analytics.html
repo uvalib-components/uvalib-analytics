@@ -52,6 +52,10 @@ Example:
           type: Object,
           value: null,
           observer: '_eventTriggered'
+        },
+        error: {
+          type: String,
+          value: null
         }
       },
       ready: function(){
@@ -81,6 +85,9 @@ Example:
           if (this.path) {
             _paq.push(['setCustomUrl', document.location.origin+this.path ]);
             _paq.push(['setDocumentTitle', document.title]);
+          }
+          if (this.error === "404") {
+            _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(this.path+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
           }
           _paq.push(['trackPageView']);
         }, 1000);
