@@ -57,6 +57,10 @@ Example:
           type: String,
           value: null
         }
+        referrer: {
+          type: String,
+          value: null
+        }
       },
       ready: function(){
         this.pathChanged();
@@ -87,7 +91,8 @@ Example:
             _paq.push(['setDocumentTitle', document.title]);
           }
           if (this.error === "404") {
-            _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(this.path+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
+            var ref = (document.referrer)? document.referrer: this.referrer;
+            _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(this.path+document.location.search) + '/From = ' + encodeURIComponent(ref)]);
           }
           _paq.push(['trackPageView']);
         }, 1000);
